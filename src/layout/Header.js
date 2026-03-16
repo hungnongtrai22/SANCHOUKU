@@ -7,25 +7,25 @@ import { useLocales } from "../locales";
 import LanguagePopover from "./_common/language-popover";
 
 const Header = ({ header }) => {
-  const {currentLang, t} = useLocales();
-  // console.log("Test", currentLang) 
+  const { currentLang, t } = useLocales();
+  // console.log("Test", currentLang)
   switch (header) {
     case 1:
-      return <Header1 t={t}/>;
+      return <Header1 t={t} />;
     case 2:
-      return <Header2 t={t}/>;
+      return <Header2 t={t} />;
     case 3:
-      return <Header3 t={t}/>;
+      return <Header3 t={t} />;
 
     default:
-      return <DefaultHeader t={t}/>;
+      return <DefaultHeader t={t} />;
   }
 };
 export default Header;
 
 const SearchBtn = () => {
   const [toggle, setToggle] = useState(false);
-  const {t} = useLocales();
+  const { t } = useLocales();
 
   return (
     <Fragment>
@@ -37,7 +37,7 @@ const SearchBtn = () => {
       >
         <input
           type="text"
-          placeholder={t('search')}
+          placeholder={t("search")}
           className="searchbox"
           required=""
         />
@@ -46,31 +46,73 @@ const SearchBtn = () => {
     </Fragment>
   );
 };
-const DaskTopMenu = ({t}) => (
+const DaskTopMenu = ({ t }) => (
   <ul className="navigation clearfix d-none d-lg-flex">
-    
     <li>
       <Link legacyBehavior href="/">
-        {t('home')}
+        {t("home")}
       </Link>
     </li>
     <li>
       <Link legacyBehavior href="/center">
-        {t('support')}
+        {t("support")}
       </Link>
     </li>
-    
-     <li>
+
+    <li>
       <Link legacyBehavior href="/info">
-        {t('info')}
+        {t("info")}
       </Link>
+    </li>
+
+    <li>
+      <Link legacyBehavior href="/">
+        Chứng nhận
+      </Link>
+    </li>
+
+    {/* <li>
+      <Link legacyBehavior href="/center">
+        Quản lý dữ liệu Sanchoku
+      </Link>
+    </li> */}
+
+    <li className="dropdown">
+      <a href="#">Thông Tin Thêm</a>
+      <ul>
+        <Fragment>
+          <li>
+            <a href="/shop-left-sidebar">Quản lý dữ liệu Sanchoku</a>
+          </li>
+          <li>
+            <a href="/shop-left-sidebar">Tt thông tin Farm to table</a>
+          </li>
+          <li>
+            <a href="/shop-left-sidebar">Thành viên</a>
+          </li>
+          <li>
+            <a href="/shop-left-sidebar">
+              Kế hoạch sản xuất- kế hoạch bán hàng
+            </a>
+          </li>
+          <li>
+            <a href="/shop-left-sidebar">Nội bộ</a>
+          </li>
+          <li>
+            <a href="/shop-left-sidebar">Cam kết</a>
+          </li>
+        </Fragment>
+      </ul>
+      <div className="dropdown-btn">
+        <span className="fas fa-chevron-down" />
+      </div>
     </li>
 
     {/* <Contact /> */}
   </ul>
 );
 
-const Nav = ({t}) => {
+const Nav = ({ t }) => {
   const [nav, setNav] = useState(false);
   return (
     <nav className="main-menu navbar-expand-lg mobile-nav">
@@ -78,12 +120,12 @@ const Nav = ({t}) => {
         <div className="mobile-logo my-15">
           <Link legacyBehavior href="/">
             <a>
-              <img src="assets/images/logos/NTFOOD.png" alt="Logo" title="Logo" />
+              {/* <img src="assets/images/logos/NTFOOD.png" alt="Logo" title="Logo" />
               <img
                 src="assets/images/logos/logo-white.png"
                 alt="Logo"
                 title="Logo"
-              />
+              /> */}
             </a>
           </Link>
         </div>
@@ -101,14 +143,14 @@ const Nav = ({t}) => {
         </button>
       </div>
       <div className={`navbar-collapse collapse clearfix ${nav ? "show" : ""}`}>
-        <DaskTopMenu t={t}/>
+        <DaskTopMenu t={t} />
         <MobileMenu />
       </div>
     </nav>
   );
 };
 
-const DefaultHeader = ({t}) => (
+const DefaultHeader = ({ t }) => (
   <header className="main-header">
     <div className="header-top-wrap bg-light-green text-white py-10">
       <div className="container-fluid">
@@ -166,18 +208,18 @@ const DefaultHeader = ({t}) => (
             <div className="logo">
               <Link legacyBehavior href="/">
                 <a>
-                  <img
+                  {/* <img
                     src="assets/images/logos/NTFOOD.png"
                     alt="Logo"
                     title="Logo"
-                  />
+                  /> */}
                 </a>
               </Link>
             </div>
           </div>
           <div className="nav-outer clearfix">
             {/* Main Menu */}
-            <Nav t={t}/>
+            <Nav t={t} />
             {/* Main Menu End*/}
           </div>
           {/* Menu Button */}
@@ -186,10 +228,10 @@ const DefaultHeader = ({t}) => (
             <div className="nav-search py-15">
               <SearchBtn />
             </div>
-            <button className="cart">
+            {/* <button className="cart">
               <i className="far fa-shopping-basket" />
               <span>5</span>
-            </button>
+            </button> */}
             <button className="user">
               <i className="far fa-user-circle" />
             </button>
@@ -213,7 +255,7 @@ const DefaultHeader = ({t}) => (
     {/*End Header Upper*/}
   </header>
 );
-const Header1 = ({t}) => (
+const Header1 = ({ t }) => (
   <header className="main-header menu-absolute">
     <div className="header-top-wrap bg-light-green text-white py-10">
       <div className="container-fluid">
@@ -224,11 +266,13 @@ const Header1 = ({t}) => (
                 <ul>
                   <li>
                     <i className="far fa-envelope" /> <b>Email:</b>{" "}
-                    <a href="mailto:nhattanfoods@gmail.com">nhattanfoods@gmail.com</a>
+                    <a href="mailto:nhattanfoods@gmail.com">
+                      support@gmail.com
+                    </a>
                   </li>
                   <li>
-                    <i className="far fa-clock" /> <b>{t('workingHours')} :</b> {t('monday')}
-                    {" "}- {t('friday')}, 08 am - 05 pm
+                    <i className="far fa-clock" /> <b>{t("workingHours")} :</b>{" "}
+                    {t("monday")} - {t("friday")}, 08 am - 05 pm
                   </li>
                 </ul>
               </div>
@@ -237,7 +281,7 @@ const Header1 = ({t}) => (
               <div className="top-right text-lg-right">
                 <ul>
                   <li>
-                    <i className="far fa-phone" /> <b>{t('phone')} :</b>{" "}
+                    <i className="far fa-phone" /> <b>{t("phone")} :</b>{" "}
                     <a href="callto:+012(345)67899">+012 (345) 678 99</a>
                   </li>
                   <li>
@@ -274,18 +318,18 @@ const Header1 = ({t}) => (
             <div className="logo">
               <Link legacyBehavior href="/">
                 <a>
-                  <img
+                  {/* <img
                     src="assets/images/logos/NTFOOD.png"
                     alt="Logo"
                     title="Logo"
-                  />
+                  /> */}
                 </a>
               </Link>
             </div>
           </div>
           <div className="nav-outer clearfix">
             {/* Main Menu */}
-            <Nav t={t}/>
+            <Nav t={t} />
             {/* Main Menu End*/}
           </div>
           {/* Menu Button */}
@@ -294,16 +338,16 @@ const Header1 = ({t}) => (
             <div className="nav-search py-15">
               <SearchBtn />
             </div>
-            <button className="cart">
+            {/* <button className="cart">
               <i className="far fa-shopping-basket" />
               <span>5</span>
-            </button>
+            </button> */}
             <button className="user">
               <i className="far fa-user-circle" />
             </button>
             <Link legacyBehavior href="/contact">
               <a className="theme-btn" style={{ whiteSpace: "nowrap" }}>
-                {t('consultations')} <i className="fas fa-angle-double-right" />
+                {t("consultations")} <i className="fas fa-angle-double-right" />
               </a>
             </Link>
             {/* menu sidbar */}
@@ -321,7 +365,7 @@ const Header1 = ({t}) => (
     {/*End Header Upper*/}
   </header>
 );
-const Header2 = ({t}) => (
+const Header2 = ({ t }) => (
   <header className="main-header header-two">
     <div className="header-top-wrap">
       <div className="container">
@@ -375,7 +419,7 @@ const Header2 = ({t}) => (
             <div className="logo">
               <Link legacyBehavior href="/">
                 <a>
-                  <img
+                  {/* <img
                     src="assets/images/logos/NTFOOD.png"
                     alt="Logo"
                     title="Logo"
@@ -384,14 +428,14 @@ const Header2 = ({t}) => (
                     src="assets/images/logos/logo-white.png"
                     alt="Logo"
                     title="Logo"
-                  />
+                  /> */}
                 </a>
               </Link>
             </div>
           </div>
           <div className="nav-outer clearfix">
             {/* Main Menu */}
-            <Nav t={t}/>
+            <Nav t={t} />
             {/* Main Menu End*/}
           </div>
           {/* Menu Button */}
@@ -413,9 +457,9 @@ const Header2 = ({t}) => (
                 <button type="submit" className="searchbutton far fa-search" />
               </form>
             </div>
-            <button className="cart">
+            {/* <button className="cart">
               <i className="far fa-shopping-basket" />
-            </button>
+            </button> */}
             {/* menu sidbar */}
             <div className="menu-sidebar" onClick={() => sidebarToggle()}>
               <button>
@@ -431,7 +475,7 @@ const Header2 = ({t}) => (
     {/*End Header Upper*/}
   </header>
 );
-const Header3 = ({t}) => (
+const Header3 = ({ t }) => (
   <header className="main-header header-three menu-absolute">
     <div className="header-top-wrap bgc-primary py-10">
       <div className="container-fluid">
@@ -496,10 +540,10 @@ const Header3 = ({t}) => (
               />
               <button type="submit" className="searchbutton far fa-search" />
             </form>
-            <button className="cart">
+            {/* <button className="cart">
               <i className="far fa-shopping-basket" />
               <span>5</span>
-            </button>
+            </button> */}
             <button className="user">
               <i className="far fa-user-circle" />
             </button>
@@ -516,7 +560,7 @@ const Header3 = ({t}) => (
         <div className="header-inner d-flex align-items-center">
           <div className="nav-outer clearfix">
             {/* Main Menu */}
-            <Nav t={t}/>
+            <Nav t={t} />
             {/* Main Menu End*/}
           </div>
           {/* menu sidbar */}

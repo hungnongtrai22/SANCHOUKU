@@ -66,7 +66,7 @@ const PhotoGallery = (props) => {
           className="gallery-active"
         >
           <div className="gallery-item wow fadeInUp delay-0-2s">
-            <img src="assets/images/gellery/gallery1.jpg" alt="Gallery" />
+            <img src="/assets/images/gellery/gallery1.jpg" alt="Gallery" />
             <div className="gallery-over">
               <div className="content">
                 <h4>Organic Fruits</h4>
@@ -81,7 +81,7 @@ const PhotoGallery = (props) => {
           </div>
 
           <div className="gallery-item big-item wow fadeInUp delay-0-4s">
-            <img src="assets/images/gellery/gallery2.jpg" alt="Gallery" />
+            <img src="/assets/images/gellery/gallery2.jpg" alt="Gallery" />
             <div className="gallery-over">
               <div className="content">
                 <h4>Organic Fruits Juice</h4>
@@ -96,7 +96,7 @@ const PhotoGallery = (props) => {
           </div>
 
           <div className="gallery-item wow fadeInUp delay-0-6s">
-            <img src="assets/images/gellery/gallery3.jpg" alt="Gallery" />
+            <img src="/assets/images/gellery/gallery3.jpg" alt="Gallery" />
             <div className="gallery-over">
               <div className="content">
                 <h4>Organic Fruits</h4>
@@ -111,7 +111,7 @@ const PhotoGallery = (props) => {
           </div>
 
           <div className="gallery-item wow fadeInUp delay-0-8s">
-            <img src="assets/images/gellery/gallery4.jpg" alt="Gallery" />
+            <img src="/assets/images/gellery/gallery4.jpg" alt="Gallery" />
             <div className="gallery-over">
               <div className="content">
                 <h4>Organic Fruits</h4>

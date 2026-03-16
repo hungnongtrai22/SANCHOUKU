@@ -3,20 +3,20 @@ import Counter from "../components/Counter";
 import { useLocales } from "../locales";
 
 const Footer = ({ footer }) => {
-  const {t} = useLocales();
+  const { t } = useLocales();
   switch (footer) {
     case 1:
-      return <DefaultFooter t={t}/>;
+      return <DefaultFooter t={t} />;
     case 3:
-      return <Footer3 t={t}/>;
+      return <Footer3 t={t} />;
 
     default:
-      return <DefaultFooter t={t}/>;
+      return <DefaultFooter t={t} />;
   }
 };
 export default Footer;
 
-const ScrollTopBtn = ({t}) => {
+const ScrollTopBtn = ({ t }) => {
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -32,17 +32,17 @@ const ScrollTopBtn = ({t}) => {
   );
 };
 
-const DefaultFooter = ({t}) => (
+const DefaultFooter = ({ t }) => (
   <footer className="main-footer bg-green text-white">
     <div className="container">
       <div className="footer-top-newsletter py-80 mb-75">
         <div className="section-title">
-          <h2>{t('newsletterSubscribe')}</h2>
+          <h2>{t("newsletterSubscribe")}</h2>
         </div>
         <form onSubmit={(e) => e.preventDefault()} action="#">
-          <input type="email" placeholder={t('emailAddress')} required="" />
+          <input type="email" placeholder={t("emailAddress")} required="" />
           <button className="theme-btn">
-            {t('subscribeNow')} <i className="fas fa-angle-double-right" />
+            {t("subscribeNow")} <i className="fas fa-angle-double-right" />
           </button>
         </form>
       </div>
@@ -52,7 +52,7 @@ const DefaultFooter = ({t}) => (
             <div className="footer-logo mb-30">
               <Link legacyBehavior href="/">
                 <a>
-                  <img src="assets/images/logos/NTFOOD.png" alt="Logo" />
+                  {/* <img src="/assets/images/logos/NTFOOD.png" alt="Logo" /> */}
                 </a>
               </Link>
             </div>
@@ -87,88 +87,87 @@ const DefaultFooter = ({t}) => (
         </div>
         <div className="col-lg-4 col-md-6 order-md-1">
           <div className="footer-widget menu-widget two-column">
-            <h4 className="footer-title">{t('links')}</h4>
-        <ul>
-  <li>
-    <Link legacyBehavior href="/about">
-      <a>{t('aboutUs')}</a>
-    </Link>
-  </li>
+            <h4 className="footer-title">{t("links")}</h4>
+            <ul>
+              <li>
+                <Link legacyBehavior href="/about">
+                  <a>{t("aboutUs")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/contact">
-      <a>{t('documentation')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/contact">
+                  <a>{t("documentation")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/services">
-      <a>{t('services')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/services">
+                  <a>{t("services")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/services">
-      <a>{t('elements')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/services">
+                  <a>{t("elements")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/portfolio-grid">
-      <a>{t('ourProjects')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/portfolio-grid">
+                  <a>{t("ourProjects")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/shop-grid">
-      <a>{t('bestProducts')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/shop-grid">
+                  <a>{t("bestProducts")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/farmers">
-      <a>{t('meetFarmers')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/farmers">
+                  <a>{t("meetFarmers")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/service-details">
-      <a>{t('technology')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/service-details">
+                  <a>{t("technology")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/blog-grid">
-      <a>{t('latestNews')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/blog-grid">
+                  <a>{t("latestNews")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/contact">
-      <a>{t('contactUs')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/contact">
+                  <a>{t("contactUs")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/service-details">
-      <a>{t('nuds')}</a>
-    </Link>
-  </li>
+              <li>
+                <Link legacyBehavior href="/service-details">
+                  <a>{t("nuds")}</a>
+                </Link>
+              </li>
 
-  <li>
-    <Link legacyBehavior href="/contact">
-      <a>
-        {t('setting')} &amp; {t('privacy')}
-      </a>
-    </Link>
-  </li>
-</ul>
-
+              <li>
+                <Link legacyBehavior href="/contact">
+                  <a>
+                    {t("setting")} &amp; {t("privacy")}
+                  </a>
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="col-lg-4 col-md-6 order-md-3">
           <div className="footer-widget contact-widget">
-            <h4 className="footer-title">{t('contactUs')}</h4>
+            <h4 className="footer-title">{t("contactUs")}</h4>
             <p>
               Quis autem vel eum reprehenderit voluptate velit esse quamnue{" "}
             </p>
@@ -190,23 +189,23 @@ const DefaultFooter = ({t}) => (
         </div>
       </div>
       <div className="copyright-area pt-25 pb-10">
-        <p>Copyright © 2026 Nhat Tan Food. All Rights Reserved.</p>
+        <p>Copyright © 2026 SANCHOUKU. All Rights Reserved.</p>
         <ul className="footer-menu">
           <li>
             <Link legacyBehavior href="/contact">
-            <a>
-              {t('setting')} &amp; {t('privacy')}
+              <a>
+                {t("setting")} &amp; {t("privacy")}
               </a>
             </Link>
           </li>
           <li>
             <Link legacyBehavior href="/faqs">
-              <a>{t('faq')}</a>
+              <a>{t("faq")}</a>
             </Link>
           </li>
           <li>
             <Link legacyBehavior href="/contact">
-              {t('payments')}
+              {t("payments")}
             </Link>
           </li>
         </ul>
@@ -217,33 +216,33 @@ const DefaultFooter = ({t}) => (
     <div className="footer-shapes">
       <img
         className="footer-bg"
-        src="assets/images/background/footer-bg-shape.png"
+        src="/assets/images/background/footer-bg-shape.png"
         alt="Shape"
       />
       <img
         className="shape-one"
-        src="assets/images/shapes/footer1.png"
+        src="/assets/images/shapes/footer1.png"
         alt="Shape"
       />
       <img
         className="shape-two"
-        src="assets/images/shapes/footer2.png"
+        src="/assets/images/shapes/footer2.png"
         alt="Shape"
       />
       <img
         className="shape-three"
-        src="assets/images/shapes/footer3.png"
+        src="/assets/images/shapes/footer3.png"
         alt="Shape"
       />
       <img
         className="shape-four"
-        src="assets/images/shapes/footer4.png"
+        src="/assets/images/shapes/footer4.png"
         alt="Shape"
       />
     </div>
   </footer>
 );
-const Footer3 = ({t}) => (
+const Footer3 = ({ t }) => (
   <footer className="main-footer footer-black text-white">
     <div className="container-fluid">
       <div className="footer-top-newsletter py-80 mb-75">
@@ -273,7 +272,7 @@ const Footer3 = ({t}) => (
                   <Link legacyBehavior href="/">
                     <a>
                       <img
-                        src="assets/images/logos/logo-two-white.png"
+                        src="/assets/images/logos/logo-two-white.png"
                         alt="Logo"
                       />
                     </a>
@@ -356,7 +355,7 @@ const Footer3 = ({t}) => (
                   <li>
                     <div className="image">
                       <img
-                        src="assets/images/news/news-widget1.jpg"
+                        src="/assets/images/news/news-widget1.jpg"
                         alt="News"
                       />
                     </div>
@@ -372,7 +371,7 @@ const Footer3 = ({t}) => (
                   <li>
                     <div className="image">
                       <img
-                        src="assets/images/news/news-widget2.jpg"
+                        src="/assets/images/news/news-widget2.jpg"
                         alt="News"
                       />
                     </div>
@@ -392,7 +391,8 @@ const Footer3 = ({t}) => (
               <div className="footer-widget contact-widget">
                 <h4 className="footer-title">Contact Us</h4>
                 <p>
-                  Quis autem vel eum reprehenderit voluptate velit esse quamnue{" "}
+                  Quis autem vel eum reprehenderit voluptate velit esse
+                  quamnue{" "}
                 </p>
                 <ul>
                   <li>
@@ -415,56 +415,56 @@ const Footer3 = ({t}) => (
                 <h4 className="footer-title">Gallery</h4>
                 <ul>
                   <li>
-                    <a href="assets/images/widgets/gallery1.jpg">
+                    <a href="/assets/images/widgets/gallery1.jpg">
                       <i className="fas fa-plus" />
                     </a>
                     <img
-                      src="assets/images/widgets/gallery1.jpg"
+                      src="/assets/images/widgets/gallery1.jpg"
                       alt="Gallery"
                     />
                   </li>
                   <li>
-                    <a href="assets/images/widgets/gallery2.jpg">
+                    <a href="/assets/images/widgets/gallery2.jpg">
                       <i className="fas fa-plus" />
                     </a>
                     <img
-                      src="assets/images/widgets/gallery2.jpg"
+                      src="/assets/images/widgets/gallery2.jpg"
                       alt="Gallery"
                     />
                   </li>
                   <li>
-                    <a href="assets/images/widgets/gallery3.jpg">
+                    <a href="/assets/images/widgets/gallery3.jpg">
                       <i className="fas fa-plus" />
                     </a>
                     <img
-                      src="assets/images/widgets/gallery3.jpg"
+                      src="/assets/images/widgets/gallery3.jpg"
                       alt="Gallery"
                     />
                   </li>
                   <li>
-                    <a href="assets/images/widgets/gallery4.jpg">
+                    <a href="/assets/images/widgets/gallery4.jpg">
                       <i className="fas fa-plus" />
                     </a>
                     <img
-                      src="assets/images/widgets/gallery4.jpg"
+                      src="/assets/images/widgets/gallery4.jpg"
                       alt="Gallery"
                     />
                   </li>
                   <li>
-                    <a href="assets/images/widgets/gallery5.jpg">
+                    <a href="/assets/images/widgets/gallery5.jpg">
                       <i className="fas fa-plus" />
                     </a>
                     <img
-                      src="assets/images/widgets/gallery5.jpg"
+                      src="/assets/images/widgets/gallery5.jpg"
                       alt="Gallery"
                     />
                   </li>
                   <li>
-                    <a href="assets/images/widgets/gallery6.jpg">
+                    <a href="/assets/images/widgets/gallery6.jpg">
                       <i className="fas fa-plus" />
                     </a>
                     <img
-                      src="assets/images/widgets/gallery6.jpg"
+                      src="/assets/images/widgets/gallery6.jpg"
                       alt="Gallery"
                     />
                   </li>
@@ -478,7 +478,7 @@ const Footer3 = ({t}) => (
     <div className="copyright-area-wrap">
       <div className="container-fluid">
         <div className="copyright-area pt-25 pb-10">
-          <p>Copyright © 2026 Nhat Tan Food. All Rights Reserved.</p>
+          <p>Copyright © 2026 SANCHOUKU. All Rights Reserved.</p>
           <ul className="footer-menu">
             <li>
               <Link legacyBehavior href="/contact">
@@ -506,27 +506,27 @@ const Footer3 = ({t}) => (
     <div className="footer-shapes">
       <img
         className="footer-bg"
-        src="assets/images/background/footer-bg-shape.png"
+        src="/assets/images/background/footer-bg-shape.png"
         alt="Shape"
       />
       <img
         className="shape-one"
-        src="assets/images/shapes/footer1.png"
+        src="/assets/images/shapes/footer1.png"
         alt="Shape"
       />
       <img
         className="shape-two"
-        src="assets/images/shapes/footer2.png"
+        src="/assets/images/shapes/footer2.png"
         alt="Shape"
       />
       <img
         className="shape-three"
-        src="assets/images/shapes/footer3.png"
+        src="/assets/images/shapes/footer3.png"
         alt="Shape"
       />
       <img
         className="shape-four"
-        src="assets/images/shapes/footer4.png"
+        src="/assets/images/shapes/footer4.png"
         alt="Shape"
       />
     </div>

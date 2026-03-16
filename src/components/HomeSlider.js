@@ -27,7 +27,7 @@ export const HomeSlider1 = () => {
                 <h1>{t('organic')} &amp; {t('mushroom')}</h1>
                 <h6>{t('exp')}</h6>
                 <div className="slider-btns mt-30">
-                  <Link legacyBehavior href="/shop-grid">
+                  {/* <Link legacyBehavior href="/shop-grid">
                     <a className="theme-btn style-two">
                       {t('shop')} <i className="fas fa-angle-double-right" />
                     </a>
@@ -36,7 +36,7 @@ export const HomeSlider1 = () => {
                     <a className="theme-btn style-two">
                       {t('learn')} <i className="fas fa-angle-double-right" />
                     </a>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@ export const HomeSlider1 = () => {
                 <h1>{t('organic')} &amp; {t('mushroom')}</h1>
                 <h6>{t('exp')}</h6>
                 <div className="slider-btns mt-30">
-                  <Link legacyBehavior href="/shop-grid">
+                  {/* <Link legacyBehavior href="/shop-grid">
                     <a className="theme-btn style-two">
                       {t('shop')} <i className="fas fa-angle-double-right" />
                     </a>
@@ -120,7 +120,7 @@ export const HomeSlider1 = () => {
                     <a className="theme-btn style-two">
                       {t('learn')} <i className="fas fa-angle-double-right" />
                     </a>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </div>

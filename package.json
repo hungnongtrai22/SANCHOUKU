@@ -33,6 +33,7 @@
     "react-dom": "^18.3.1",
     "react-i18next": "^16.5.3",
     "react-nice-select": "^1.0.4",
+    "react-photo-view": "^1.2.7",
     "react-slick": "^0.29.0",
     "react-visibility-sensor": "^5.1.1",
     "wowjs": "^1.1.3"

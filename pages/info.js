@@ -11,25 +11,88 @@ import PhotoGallery from "../src/components/slider/PhotoGallery";
 import Layout from "../src/layout/Layout";
 import { useLocales } from "../src/locales";
 const Info = () => {
-    const {t} = useLocales();
-  
+  const { t } = useLocales();
+
   return (
     <Layout>
-      <PageBanner pageName={t('info')} />
-       {/* Feedback Section Start */}
+      <PageBanner pageName={t("info")} />
+      {/* Feedback Section Start */}
       <section className="feedback-section pt-130 rpt-90 pb-0 rpb-100">
         <div className="container">
           <div className="section-title text-center mb-60">
-            <span className="sub-title mb-20">{t('farmer')}</span>
+            <span className="sub-title mb-20">{t("farmer")}</span>
             <h2>{t("info_farmer")}</h2>
           </div>
         </div>
         <FeedbackTwoSlider />
       </section>
       {/* Feedback Section End */}
-     
+
+      <section className="who-we-are rel z-1 pt-130 rpt-100">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6">
+              <div className="who-we-are-content rmb-35 wow fadeInLeft delay-0-2s">
+                <div className="section-title mb-20">
+                  <span className="sub-title mb-20">{t("standard")}</span>
+                  <h2>{t("standard_cgap")}</h2>
+                </div>
+                <p>{t("cgap_content")}</p>
+                <ul className="list-style-two pt-10 pb-45">
+                  <li>{t("cgap_subcontent1")}</li>
+                  <li>{t("cgap_subcontent2")}</li>
+                  <li>{t("cgap_subcontent3")}</li>
+                  <li>{t("cgap_subcontent4")}</li>
+                  {/* <li>{t('cgap_subcontent5')}</li>
+                  <li>{t('cgap_subcontent6')}</li>
+                  <li>{t('cgap_subcontent7')}</li>
+                  <li>{t('cgap_subcontent8')}</li>
+                  <li>{t('cgap_subcontent9')}</li>
+                  <li>{t('cgap_subcontent10')}</li>
+                  <li>{t('cgap_subcontent11')}</li>
+                  <li>{t('cgap_subcontent12')}</li>
+                  <li>{t('cgap_subcontent13')}</li>
+                  <li>{t('cgap_subcontent14')}</li>
+                  <li>{t('cgap_subcontent15')}</li>
+                  <li>{t('cgap_subcontent16')}</li>
+                  <li>{t('cgap_subcontent17')}</li>
+                  <li>{t('cgap_subcontent18')}</li> */}
+                </ul>
+                <a
+                  href="/assets/files/TC C-GAP.xlsx"
+                  download
+                  className="read-more"
+                >
+                  {t("read_more")} <i className="fas fa-angle-double-right" />
+                </a>
+              </div>
+            </div>
+            <div className="col-lg-6 text-lg-right">
+              <div className="who-we-are-image wow fadeInRight delay-0-2s">
+                <img
+                  src="assets/images/about/who-we-are.png"
+                  alt="Who We Are"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="who-we-are-shapes">
+          <img
+            className="shape-one"
+            src="assets/images/shapes/who-we-are-1.png"
+            alt="Shape"
+          />
+          <img
+            className="shape-two"
+            src="assets/images/team/team-profile-bg.png"
+            alt="Shape"
+          />
+        </div>
+      </section>
+
       {/* Team Area End */}
-      
+
       {/* Counter Area Start */}
       {/* <div className="counter-area rel z-2 bg-light-green text-white pt-60 pb-25">
         <div className="container">
@@ -140,10 +203,10 @@ const Info = () => {
       </section>
       {/* Gallery Area End */}
 
-        <section className="news-page-section rel z-1 py-130 rpy-100">
-           <div className="container">
+      <section className="news-page-section rel z-1 py-130 rpy-100">
+        <div className="container">
           <div className="section-title text-center mb-60">
-            <span className="sub-title mb-20">{t('history')}</span>
+            <span className="sub-title mb-20">{t("history")}</span>
             {/* <h2>{t("info_farmer")}</h2> */}
           </div>
         </div>
@@ -397,13 +460,13 @@ const Info = () => {
           />
         </div>
       </section>
-{/* 
+      {/* 
        <section className="team-page-area pt-130 rpt-100 pb-95 rpb-65">
         <div className="container">
           <ExperienceTeam />
         </div>
       </section> */}
-     
+
       {/* Client Logo Section Start */}
       <div className="client-logo-section text-center bg-light-green py-60">
         <div className="container">

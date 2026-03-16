@@ -7,10 +7,10 @@ import PhotoGallery from "../src/components/slider/PhotoGallery";
 import Layout from "../src/layout/Layout";
 import { useLocales } from "../src/locales";
 const center = () => {
-  const {t} = useLocales();
+  const { t } = useLocales();
   return (
     <Layout>
-      <PageBanner pageName={t('support')} />
+      <PageBanner pageName={t("support")} />
       {/* Page Banner End */}
       {/* About Section Start */}
       <section className="about-page-section rel z-1 py-130 rpy-100">
@@ -19,20 +19,17 @@ const center = () => {
             <div className="col-lg-6">
               <div className="about-three-content rmb-35 wow fadeInLeft delay-0-2s">
                 <div className="section-title mb-20">
-                  <span className="sub-title mb-20">{t('sanchouku')}</span>
-                  <h2>{t('sanchouku_content')}</h2>
+                  <span className="sub-title mb-20">{t("sanchouku")}</span>
+                  <h2>{t("sanchouku_content")}</h2>
                 </div>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo enim voluptatem.
-                </p>
-                <Link legacyBehavior href="">
-                    <a className="read-more">
-                      {t('read_more')} <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
+                <p>{t("pgs_content")}</p>
+                <a
+                  href="/assets/files/PGS_KATAYAMA.pdf"
+                  download
+                  className="read-more"
+                >
+                  {t("read_more")} <i className="fas fa-angle-double-right" />
+                </a>
                 {/* <div className="row mt-30">
                   <div className="col-md-6">
                     <div className="about-feature-two">
@@ -118,7 +115,7 @@ const center = () => {
         />
       </section>
       {/* About Section End */}
-       {/* About Section Start */}
+      {/* About Section Start */}
       <section className="about-section-two rel z-1">
         <div className="container">
           <div className="row">
@@ -139,8 +136,8 @@ const center = () => {
             <div className="col-lg-6">
               <div className="about-two-content pt-60 wow fadeInUp delay-0-4s">
                 <div className="section-title mb-35">
-                  <span className="sub-title mb-20">{t('regulation')}</span>
-                  <h2>{t('regulations')}</h2>
+                  <span className="sub-title mb-20">{t("regulation")}</span>
+                  <h2>{t("regulations")}</h2>
                 </div>
                 <div className="about-features mt-60">
                   <div className="row">
@@ -152,7 +149,7 @@ const center = () => {
                         </div>
                         <h4>
                           <Link legacyBehavior href="/service-details">
-                            {t('regulation1')}
+                            {t("regulation1")}
                           </Link>
                         </h4>
                         <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
@@ -167,7 +164,7 @@ const center = () => {
                         </div>
                         <h4>
                           <Link legacyBehavior href="/service-details">
-                            {t('regulation2')}
+                            {t("regulation2")}
                           </Link>
                         </h4>
                         <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
@@ -182,7 +179,7 @@ const center = () => {
                         </div>
                         <h4>
                           <Link legacyBehavior href="/service-details">
-                            {t('regulation3')}
+                            {t("regulation3")}
                           </Link>
                         </h4>
                         <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
@@ -290,7 +287,7 @@ const center = () => {
         </div>
       </section>
       {/* Team Area End */}
-     
+
       {/* Feedback Section Start */}
       {/* <section className="feedback-section pt-100 rpt-70 pb-130 rpb-100">
         <div className="container">

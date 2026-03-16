@@ -53,7 +53,7 @@ const Index = () => {
       </section>
       {/* Slider Section End */}
       {/* Category Section Start */}
-      <section className="category-section pt-130 rpt-100">
+      {/* <section className="category-section pt-130 rpt-100">
         <div className="container">
           <div className="row align-items-end pb-35">
             <div className="col-lg-7 wow fadeInUp delay-0-2s">
@@ -130,10 +130,10 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* Category Section End */}
       {/* About Section Start */}
-      <section className="about-section pt-85 rpt-55 pb-130 rpb-100">
+      {/* <section className="about-section pt-85 rpt-55 pb-130 rpb-100">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -241,10 +241,10 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* About Section End */}
       {/* Offer Banners Start */}
-      <section className="offer-banners-area">
+      {/* <section className="offer-banners-area">
         <div className="container-fluid">
           <div className="row">
             <div className="col-xl-4 col-md-6">
@@ -330,10 +330,10 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* Offer Banners End */}
       {/* Product Section Start */}
-      <section className="product-section pt-100 rpt-70 pb-130 rpb-100">
+      {/* <section className="product-section pt-100 rpt-70 pb-130 rpb-100">
         <div className="container-fluid">
           <div className="section-title text-center mb-60">
             <span className="sub-title mb-20">
@@ -510,10 +510,10 @@ const Index = () => {
             </div>
           </Slider>
         </div>
-      </section>
+      </section> */}
       {/* Product Section End */}
       {/* Video Area Start */}
-      <div className="video-area">
+      <div className="video-area pt-130 pb-250">
         <div className="container">
           <div
             className="video-inner wow fadeInUp delay-0-2s"
@@ -536,7 +536,7 @@ const Index = () => {
       </div>
       {/* Video Area End */}
       {/* Special Offer Start */}
-      <section className="special-offer bg-lighter pt-250 pb-80">
+      {/* <section className="special-offer bg-lighter pt-250 pb-80">
         <div className="special-offer-content text-center py-130 rpy-100 wow fadeInUp delay-0-2s">
           <div className="section-title mb-30">
             <span className="sub-title mb-20">{t('off')}</span>
@@ -584,10 +584,10 @@ const Index = () => {
           src="assets/images/offers/offer-right.png"
           alt="Offer"
         />
-      </section>
+      </section> */}
       {/* Special Offer End */}
       {/* Call To Action Area Start */}
-      <section className="cta-area">
+      {/* <section className="cta-area">
         <div className="container">
           <div
             className="cta-inner overlay text-white wow fadeInUp delay-0-2s"
@@ -612,7 +612,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* Call To Action Area End */}
       {/* Gallery Area Start */}
       <section className="gallery-area pt-130 rpt-100">

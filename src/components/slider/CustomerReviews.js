@@ -40,7 +40,7 @@ const CustomerReviews = () => {
             <div className="feedback-author">
               <img src="assets/images/reviews/fb-author1.png" alt="Authro" />
               <div className="title">
-                <h4>Michael D. Foreman</h4>
+                <h4>Nguyen Van A</h4>
                 <span>CEO &amp; Founder</span>
               </div>
               <div className="ratting">
@@ -59,7 +59,7 @@ const CustomerReviews = () => {
             <div className="feedback-author">
               <img src="assets/images/reviews/fb-author1.png" alt="Authro" />
               <div className="title">
-                <h4>Robert Hasib</h4>
+                <h4>Nguyen Van A</h4>
                 <span>Co-Founder</span>
               </div>
               <div className="ratting">
@@ -78,7 +78,7 @@ const CustomerReviews = () => {
             <div className="feedback-author">
               <img src="assets/images/reviews/fb-author1.png" alt="Authro" />
               <div className="title">
-                <h4>Michael D. Foreman</h4>
+                <h4>Nguyen Van A</h4>
                 <span>CEO &amp; Founder</span>
               </div>
               <div className="ratting">
