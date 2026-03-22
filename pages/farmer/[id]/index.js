@@ -1,5 +1,10 @@
 import Link from "next/link";
 // import ClientLogoSlider from "../../../src/components/ClientLogoSlider";
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import DOMPurify from "dompurify";
+
 import ClientLogoSlider from "../../../src/components/ClientLogoSlider";
 import FeedbackTwoSlider from "../../../src/components/FeedbackTwoSlider";
 import PageBanner from "../../../src/components/PageBanner";
@@ -7,11 +12,36 @@ import ExperienceTeam from "../../../src/components/slider/ExperienceTeam";
 import PhotoGallery from "../../../src/components/slider/PhotoGallery";
 import Layout from "../../../src/layout/Layout";
 import { useLocales } from "../../../src/locales";
+import FarmGallery from "../../../src/components/slider/FarmGallery";
 const FramerDetail = () => {
-  const {t} = useLocales();
+  const { t } = useLocales();
+
+  const [farmer, setFarmer] = useState(null);
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    if (!router.isReady || !id) return;
+
+    const getFarmer = async () => {
+      try {
+        const { data } = await axios.get(
+          `${process.env.NEXT_PUBLIC_BE_HOST}/api/farmer/${id}`,
+        );
+        setFarmer(data.farmer);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getFarmer();
+  }, [router.isReady, id]);
+  if (!router.isReady) return null;
+
+  const aboutFarmContent = DOMPurify.sanitize(farmer?.aboutFarmContent);
   return (
     <Layout>
-      <PageBanner pageName={t('aboutUs')} />
+      <PageBanner pageName={t("aboutUs")} />
       {/* Page Banner End */}
       {/* About Section Start */}
       <section className="about-page-section rel z-1 py-130 rpy-100">
@@ -20,39 +50,36 @@ const FramerDetail = () => {
             <div className="col-lg-6">
               <div className="about-three-content rmb-35 wow fadeInLeft delay-0-2s">
                 <div className="section-title mb-20">
-                  <span className="sub-title mb-20">{t('aboutCompany')}</span>
-                  <h2>{t('organic')} &amp; {t('healthy')}</h2>
+                  <span className="sub-title mb-20">{t("aboutCompany")}</span>
+                  <h2>{farmer?.aboutFarmTitle}</h2>
                 </div>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae ab illo inventore veritatis et quasi architecto
-                  beatae vitae dicta sunt explicabo enim voluptatem
-                </p>
+                <div
+                  dangerouslySetInnerHTML={{ __html: aboutFarmContent }}
+                ></div>
                 <div className="row mt-30">
-                  <div className="col-md-6">
+                  {farmer?.category?.map((item, index)=><div key={index} className="col-md-6">
                     <div className="about-feature-two">
                       <div className="icon">
                         <i className="flaticon-wheat-sack" />
                       </div>
                       <h4>
                         <Link legacyBehavior href="/service-details">
-                        <a>
-                          {t('agriculture')} &amp; {t('foods')}
+                          <a>
+                            {item}
                           </a>
                         </Link>
                       </h4>
                     </div>
-                  </div>
-                  <div className="col-md-6">
+                  </div>)}
+                  {/* <div className="col-md-6">
                     <div className="about-feature-two">
                       <div className="icon">
                         <i className="flaticon-fruits" />
                       </div>
                       <h4>
                         <Link legacyBehavior href="/service-details">
-                        <a>
-                          {t('nuds')} &amp; {t('mushroom')}
+                          <a>
+                            {t("nuds")} &amp; {t("mushroom")}
                           </a>
                         </Link>
                       </h4>
@@ -65,7 +92,7 @@ const FramerDetail = () => {
                       </div>
                       <h4>
                         <Link legacyBehavior href="/service-details">
-                          {t('farmingProduct')}
+                          {t("farmingProduct")}
                         </Link>
                       </h4>
                     </div>
@@ -77,11 +104,11 @@ const FramerDetail = () => {
                       </div>
                       <h4>
                         <Link legacyBehavior href="/service-details">
-                          {t('driedFruit')}
+                          {t("driedFruit")}
                         </Link>
                       </h4>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -93,7 +120,7 @@ const FramerDetail = () => {
                   alt="About"
                 />
                 <a
-                  href="https://www.youtube.com/watch?v=zAifq47wlzc"
+                  href={farmer?.video[0].url}
                   className="mfp-iframe video-play"
                 >
                   <i className="fas fa-play" />
@@ -128,7 +155,7 @@ const FramerDetail = () => {
                       alt="Feature"
                     />
                   </div>
-                  <h4>{t('nuds')}</h4>
+                  <h4>{t("nuds")}</h4>
                   <p>
                     Quis autem vel eum reprehenderit quiea voluptate velit esse
                     quam niyate smolestiae consequatur nulla
@@ -136,7 +163,7 @@ const FramerDetail = () => {
                 </div>
                 <Link legacyBehavior href="/service-details">
                   <a className="read-more">
-                    {t('read_more')} <i className="fas fa-angle-double-right" />
+                    {t("read_more")} <i className="fas fa-angle-double-right" />
                   </a>
                 </Link>
               </div>
@@ -151,7 +178,7 @@ const FramerDetail = () => {
                       alt="Feature"
                     />
                   </div>
-                  <h4>{t('driedFruit')}</h4>
+                  <h4>{t("driedFruit")}</h4>
                   <p>
                     Quis autem vel eum reprehenderit quiea voluptate velit esse
                     quam niyate smolestiae consequatur nulla
@@ -159,7 +186,7 @@ const FramerDetail = () => {
                 </div>
                 <Link legacyBehavior href="/service-details">
                   <a className="read-more">
-                    {t('read_more')} <i className="fas fa-angle-double-right" />
+                    {t("read_more")} <i className="fas fa-angle-double-right" />
                   </a>
                 </Link>
               </div>
@@ -174,7 +201,9 @@ const FramerDetail = () => {
                       alt="Feature"
                     />
                   </div>
-                  <h4>{t('agriculture')} &amp; {t('farming')}</h4>
+                  <h4>
+                    {t("agriculture")} &amp; {t("farming")}
+                  </h4>
                   <p>
                     Quis autem vel eum reprehenderit quiea voluptate velit esse
                     quam niyate smolestiae consequatur nulla
@@ -182,7 +211,7 @@ const FramerDetail = () => {
                 </div>
                 <Link legacyBehavior href="/service-details">
                   <a className="read-more">
-                    {t('read_more')} <i className="fas fa-angle-double-right" />
+                    {t("read_more")} <i className="fas fa-angle-double-right" />
                   </a>
                 </Link>
               </div>
@@ -212,27 +241,29 @@ const FramerDetail = () => {
             <div className="col-lg-6">
               <div className="about-two-content pt-60 wow fadeInUp delay-0-4s">
                 <div className="section-title mb-35">
-                  <span className="sub-title mb-20">{t('why')}</span>
-                  <h2>{t('specialCare')} &amp; {t('vegetableLover')}</h2>
+                  <span className="sub-title mb-20">{t("why")}</span>
+                  <h2>
+                    {farmer?.whyTitle}
+                  </h2>
                 </div>
                 <div className="about-features mt-60">
                   <div className="row">
-                    <div className="col-xl-4 col-md-6">
+                    {farmer?.whyContent?.map((item, index)=><div key={index} className="col-xl-4 col-md-6">
                       <div className="about-feature-item wow fadeInUp delay-0-5s">
-                        <span className="number">1</span>
+                        <span className="number">{index + 1}</span>
                         <div className="icon">
                           <i className="flaticon-offer" />
                         </div>
                         <h4>
                           <Link legacyBehavior href="/service-details">
-                            {t('discount')}
+                            {item.label}
                           </Link>
                         </h4>
-                        <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
+                        <p>{item.value}</p>
                         <img src="/assets/images/about/arrow.png" alt="Arrow" />
                       </div>
-                    </div>
-                    <div className="col-xl-4 col-md-6">
+                    </div>)}
+                    {/* <div className="col-xl-4 col-md-6">
                       <div className="about-feature-item wow fadeInUp delay-0-6s">
                         <span className="number">2</span>
                         <div className="icon">
@@ -240,7 +271,7 @@ const FramerDetail = () => {
                         </div>
                         <h4>
                           <Link legacyBehavior href="/service-details">
-                            {t('return')}
+                            {t("return")}
                           </Link>
                         </h4>
                         <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
@@ -255,13 +286,13 @@ const FramerDetail = () => {
                         </div>
                         <h4>
                           <Link legacyBehavior href="/service-details">
-                            {t('online')}
+                            {t("online")}
                           </Link>
                         </h4>
                         <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
                         <img src="/assets/images/about/arrow.png" alt="Arrow" />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -276,7 +307,7 @@ const FramerDetail = () => {
       {/* About Section End */}
       {/* Gallery Area Start */}
       <section className="gallery-area pt-90">
-        <PhotoGallery  />
+        <FarmGallery gallery={farmer?.gallery}/>
       </section>
       {/* Gallery Area End */}
       {/* Team Area Start */}
@@ -286,7 +317,7 @@ const FramerDetail = () => {
         </div>
       </section> */}
       {/* Team Area End */}
-      
+
       {/* Feedback Section Start */}
       {/* <section className="feedback-section pt-100 rpt-70 pb-130 rpb-100">
         <div className="container">

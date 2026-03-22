@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
 import Pagination from "../src/components/Pagination";
 
 import ClientLogoSlider from "../src/components/ClientLogoSlider";
@@ -12,7 +14,25 @@ import Layout from "../src/layout/Layout";
 import { useLocales } from "../src/locales";
 const Info = () => {
   const { t } = useLocales();
+  const [farmers, setNewFarmers] = useState([]);
+  const getAllFarmerHandler = useCallback(
+    async () => {
+      // console.log("Month",date.getMonth());
+      // console.log("Year",date.getFullYear());
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_BE_HOST}/api/farmer/list`
+      );
+            console.log("TEST", data.farmers);
 
+      setNewFarmers(data.farmers);
+    },
+    []
+    // [date]
+  );
+
+  useEffect(() => {
+    getAllFarmerHandler();
+  }, []);
   return (
     <Layout>
       <PageBanner pageName={t("info")} />
@@ -24,7 +44,7 @@ const Info = () => {
             <h2>{t("info_farmer")}</h2>
           </div>
         </div>
-        <FeedbackTwoSlider />
+        <FeedbackTwoSlider farmers={farmers}/>
       </section>
       {/* Feedback Section End */}
 

@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+
 import ClientLogoSlider from "../src/components/ClientLogoSlider";
 import FeedbackTwoSlider from "../src/components/FeedbackTwoSlider";
 import PageBanner from "../src/components/PageBanner";
@@ -8,6 +10,7 @@ import Layout from "../src/layout/Layout";
 import { useLocales } from "../src/locales";
 const center = () => {
   const { t } = useLocales();
+ 
   return (
     <Layout>
       <PageBanner pageName={t("support")} />
