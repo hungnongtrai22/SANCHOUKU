@@ -22,7 +22,7 @@ const FeedbackTwoSlider = ({farmers}) => {
   return (
     <Slider {...feedbackTwoActive} className="feedback-two-active mt-20">
       {farmers?.map((item, index) => {
-          const clean = DOMPurify.sanitize(item.shortIntroduce);
+          const clean = DOMPurify.sanitize(item.shortIntroduce).replace(/&nbsp;/g, " ");
           
 
         return <div key={item._id} className="feedback-item style-two wow fadeInUp delay-0-2s">
@@ -32,7 +32,7 @@ const FeedbackTwoSlider = ({farmers}) => {
           </div>
           <div className="image">
             <img
-              src={item.avatar[0].url}
+              src={item?.avatar[0]?.url}
               alt="Authro"
             />
              <img

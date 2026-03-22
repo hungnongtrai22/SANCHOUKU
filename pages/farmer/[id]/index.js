@@ -38,7 +38,7 @@ const FramerDetail = () => {
   }, [router.isReady, id]);
   if (!router.isReady) return null;
 
-  const aboutFarmContent = DOMPurify.sanitize(farmer?.aboutFarmContent);
+  const aboutFarmContent = DOMPurify.sanitize(farmer?.aboutFarmContent).replace(/&nbsp;/g, " ");
   return (
     <Layout>
       <PageBanner pageName={t("aboutUs")} />
