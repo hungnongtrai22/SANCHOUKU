@@ -120,7 +120,7 @@ const FramerDetail = () => {
                   alt="About"
                 />
                 <a
-                  href={farmer?.video[0].url}
+                  href={farmer?.video[0]?.url}
                   className="mfp-iframe video-play"
                 >
                   <i className="fas fa-play" />

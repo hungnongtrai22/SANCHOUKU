@@ -66,7 +66,7 @@ const FarmGallery = (props) => {
           className="gallery-active"
         >
           {props?.gallery?.map((item, index) => <div key={index} className={`gallery-item wow fadeInUp delay-0-${(index + 1) * 2}s`}>
-            <img src={item.url} alt={item.name} style={{maxWidth: "546px"}}/>
+            <img src={item?.url} alt={item?.name} style={{maxWidth: "546px"}}/>
             <div className="gallery-over">
               <div className="content">
                 <h4>NOI DUNG</h4>
