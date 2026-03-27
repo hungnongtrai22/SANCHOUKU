@@ -9,13 +9,14 @@ import translationVi from './langs/vi.json';
 
 const isServer = typeof window === "undefined";
 
-// 🔥 QUAN TRỌNG: KHÔNG đọc localStorage trên server
-const lng = isServer
-  ? defaultLang.value
-  : localStorageGetItem('i18nextLng', defaultLang.value);
+// ✅ chỉ detect ở client
+// if (!isServer) {
+//   i18n.use(LanguageDetector);
+// }
+
+const lng = defaultLang.value; // ❗ luôn giống server
 
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
@@ -23,17 +24,17 @@ i18n
       jp: { translations: translationJp },
     },
     lng,
-    fallbackLng: defaultLang.value, // luôn fallback về default
+    fallbackLng: defaultLang.value,
     debug: false,
     ns: ['translations'],
     defaultNS: 'translations',
     interpolation: {
       escapeValue: false,
     },
-    detection: {
-      order: ['localStorage', 'navigator'],
-      caches: ['localStorage'],
-    },
+    // detection: {
+    //   order: ['localStorage'], // ❗ bỏ navigator
+    //   caches: ['localStorage'],
+    // },
   });
 
 export default i18n;

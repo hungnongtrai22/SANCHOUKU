@@ -6,6 +6,7 @@ import "../styles/globals.css";
 
 import Head from "next/head";
 import "react-circular-progressbar/dist/styles.css";
+import i18n from '../src/locales/i18n';
 function MyApp({ Component, pageProps }) {
    const [mounted, setMounted] = useState(false);
 
@@ -13,6 +14,13 @@ function MyApp({ Component, pageProps }) {
     setMounted(true);
   }, []);
 
+useEffect(() => {
+  const lang = localStorage.getItem("i18nextLng");
+
+  if (lang) {
+    i18n.changeLanguage(lang);
+  }
+}, []);
   // if (!mounted) return null; // ⛔️ TRÁNH RENDER TRÊN SERVER
   return (
     <Fragment>

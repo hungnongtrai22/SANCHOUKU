@@ -67,7 +67,7 @@ const DaskTopMenu = ({ t }) => (
 
     <li>
       <Link legacyBehavior href="/">
-        Chứng nhận
+        {t('certification')}
       </Link>
     </li>
 
@@ -78,28 +78,28 @@ const DaskTopMenu = ({ t }) => (
     </li> */}
 
     <li className="dropdown">
-      <a href="#">Thông Tin Thêm</a>
+      <a href="#">{t('add_info')}</a>
       <ul>
         <Fragment>
           <li>
-            <a href="/shop-left-sidebar">Quản lý dữ liệu Sanchoku</a>
+            <a href="/shop-left-sidebar">{t('manage')}</a>
           </li>
           <li>
-            <a href="/shop-left-sidebar">Tt thông tin Farm to table</a>
+            <a href="/shop-left-sidebar">{t('table')}</a>
           </li>
           <li>
-            <a href="/shop-left-sidebar">Thành viên</a>
+            <a href="/shop-left-sidebar">{t('employee')}</a>
           </li>
           <li>
             <a href="/shop-left-sidebar">
-              Kế hoạch sản xuất- kế hoạch bán hàng
+              {t('plan')}
             </a>
           </li>
           <li>
-            <a href="/shop-left-sidebar">Nội bộ</a>
+            <a href="/shop-left-sidebar">{t('internal')}</a>
           </li>
           <li>
-            <a href="/shop-left-sidebar">Cam kết</a>
+            <a href="/shop-left-sidebar">{t('commit')}</a>
           </li>
         </Fragment>
       </ul>
@@ -237,7 +237,7 @@ const DefaultHeader = ({ t }) => (
             </button>
             <Link legacyBehavior href="/contact">
               <a className="theme-btn">
-                Consultations <i className="fas fa-angle-double-right" />
+                {t('consultations')} <i className="fas fa-angle-double-right" />
               </a>
             </Link>
             {/* menu sidbar */}

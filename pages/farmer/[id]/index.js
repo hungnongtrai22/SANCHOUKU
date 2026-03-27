@@ -14,7 +14,7 @@ import Layout from "../../../src/layout/Layout";
 import { useLocales } from "../../../src/locales";
 import FarmGallery from "../../../src/components/slider/FarmGallery";
 const FramerDetail = () => {
-  const { t } = useLocales();
+  const { t, currentLang } = useLocales();
 
   const [farmer, setFarmer] = useState(null);
   const router = useRouter();
@@ -38,7 +38,13 @@ const FramerDetail = () => {
   }, [router.isReady, id]);
   if (!router.isReady) return null;
 
-  const aboutFarmContent = DOMPurify.sanitize(farmer?.aboutFarmContent).replace(/&nbsp;/g, " ");
+  console.log(currentLang.value);
+
+  const aboutFarmContent = DOMPurify.sanitize(
+    currentLang.value === "jp"
+      ? farmer?.aboutFarmContentJP
+      : farmer?.aboutFarmContent,
+  ).replace(/&nbsp;/g, " ");
   return (
     <Layout>
       <PageBanner pageName={t("aboutUs")} />
@@ -51,26 +57,33 @@ const FramerDetail = () => {
               <div className="about-three-content rmb-35 wow fadeInLeft delay-0-2s">
                 <div className="section-title mb-20">
                   <span className="sub-title mb-20">{t("aboutCompany")}</span>
-                  <h2>{farmer?.aboutFarmTitle}</h2>
+                  <h2>
+                    {currentLang.value === "jp"
+                      ? farmer?.aboutFarmTitleJP
+                      : farmer?.aboutFarmTitle}
+                  </h2>
                 </div>
                 <div
                   dangerouslySetInnerHTML={{ __html: aboutFarmContent }}
                 ></div>
                 <div className="row mt-30">
-                  {farmer?.category?.map((item, index)=><div key={index} className="col-md-6">
-                    <div className="about-feature-two">
-                      <div className="icon">
-                        <i className="flaticon-wheat-sack" />
+                  {(currentLang.value === "jp"
+                    ? farmer?.categoryJP
+                    : farmer?.category
+                  )?.map((item, index) => (
+                    <div key={index} className="col-md-6">
+                      <div className="about-feature-two">
+                        <div className="icon">
+                          <i className="flaticon-wheat-sack" />
+                        </div>
+                        <h4>
+                          <Link legacyBehavior href="/service-details">
+                            <a>{item}</a>
+                          </Link>
+                        </h4>
                       </div>
-                      <h4>
-                        <Link legacyBehavior href="/service-details">
-                          <a>
-                            {item}
-                          </a>
-                        </Link>
-                      </h4>
                     </div>
-                  </div>)}
+                  ))}
                   {/* <div className="col-md-6">
                     <div className="about-feature-two">
                       <div className="icon">
@@ -242,27 +255,30 @@ const FramerDetail = () => {
               <div className="about-two-content pt-60 wow fadeInUp delay-0-4s">
                 <div className="section-title mb-35">
                   <span className="sub-title mb-20">{t("why")}</span>
-                  <h2>
-                    {farmer?.whyTitle}
-                  </h2>
+                  <h2>{currentLang.value === "jp" ? farmer?.whyTitleJP : farmer?.whyTitle}</h2>
                 </div>
                 <div className="about-features mt-60">
                   <div className="row">
-                    {farmer?.whyContent?.map((item, index)=><div key={index} className="col-xl-4 col-md-6">
-                      <div className="about-feature-item wow fadeInUp delay-0-5s">
-                        <span className="number">{index + 1}</span>
-                        <div className="icon">
-                          <i className="flaticon-offer" />
+                    {(currentLang.value === 'jp' ? farmer?.whyContentJP : farmer?.whyContent)?.map((item, index) => (
+                      <div key={index} className="col-xl-4 col-md-6">
+                        <div className="about-feature-item wow fadeInUp delay-0-5s">
+                          <span className="number">{index + 1}</span>
+                          <div className="icon">
+                            <i className="flaticon-offer" />
+                          </div>
+                          <h4>
+                            <Link legacyBehavior href="/service-details">
+                              {item.label}
+                            </Link>
+                          </h4>
+                          <p>{item.value}</p>
+                          <img
+                            src="/assets/images/about/arrow.png"
+                            alt="Arrow"
+                          />
                         </div>
-                        <h4>
-                          <Link legacyBehavior href="/service-details">
-                            {item.label}
-                          </Link>
-                        </h4>
-                        <p>{item.value}</p>
-                        <img src="/assets/images/about/arrow.png" alt="Arrow" />
                       </div>
-                    </div>)}
+                    ))}
                     {/* <div className="col-xl-4 col-md-6">
                       <div className="about-feature-item wow fadeInUp delay-0-6s">
                         <span className="number">2</span>
@@ -307,7 +323,7 @@ const FramerDetail = () => {
       {/* About Section End */}
       {/* Gallery Area Start */}
       <section className="gallery-area pt-90">
-        <FarmGallery gallery={farmer?.gallery}/>
+        <FarmGallery gallery={farmer?.gallery} />
       </section>
       {/* Gallery Area End */}
       {/* Team Area Start */}

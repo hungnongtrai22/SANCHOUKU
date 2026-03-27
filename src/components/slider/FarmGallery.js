@@ -69,8 +69,8 @@ const FarmGallery = (props) => {
             <img src={item?.url} alt={item?.name} style={{maxWidth: "546px"}}/>
             <div className="gallery-over">
               <div className="content">
-                <h4>NOI DUNG</h4>
-                <p>NOI DUNG</p>
+                {/* <h4>NOI DUNG</h4>
+                <p>NOI DUNG</p> */}
               </div>
               <Link legacyBehavior href="/portfolio-details">
                 <a className="details-btn">
