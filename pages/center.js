@@ -1,5 +1,7 @@
-import Link from "next/link";
+// 'use client';
 
+import Link from "next/link";
+// import { Document, Page } from "react-pdf";
 
 import ClientLogoSlider from "../src/components/ClientLogoSlider";
 import FeedbackTwoSlider from "../src/components/FeedbackTwoSlider";
@@ -8,9 +10,34 @@ import ExperienceTeam from "../src/components/slider/ExperienceTeam";
 import PhotoGallery from "../src/components/slider/PhotoGallery";
 import Layout from "../src/layout/Layout";
 import { useLocales } from "../src/locales";
+import dynamic from "next/dynamic";
+import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+
+const PDFViewer = dynamic(() => import("../src/components/PDFViewer"), {
+  ssr: false,
+});
+
 const center = () => {
   const { t } = useLocales();
- 
+  const [regulation, setRegulation] = useState();
+  const [pdf, setPdf] = useState(false);
+
+  const getRegulation = useCallback(async () => {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_BE_HOST}/api/center/list`,
+    );
+    // console.log("TEST",data.centers);
+
+    setRegulation(data.centers);
+  }, []);
+
+  useEffect(() => {
+    getRegulation();
+  }, []);
+
+  console.log("TEST", regulation);
+
   return (
     <Layout>
       <PageBanner pageName={t("support")} />
@@ -142,59 +169,49 @@ const center = () => {
                   <span className="sub-title mb-20">{t("regulation")}</span>
                   <h2>{t("regulations")}</h2>
                 </div>
-                <div className="about-features mt-60">
-                  <div className="row">
-                    <div className="col-xl-4 col-md-6">
-                      <div className="about-feature-item wow fadeInUp delay-0-5s">
-                        <span className="number">1</span>
-                        <div className="icon">
-                          <i className="flaticon-offer" />
-                        </div>
-                        <h4>
-                          <Link legacyBehavior href="/service-details">
-                            {t("regulation1")}
-                          </Link>
-                        </h4>
-                        <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
-                        <img src="assets/images/about/arrow.png" alt="Arrow" />
-                      </div>
-                    </div>
-                    <div className="col-xl-4 col-md-6">
-                      <div className="about-feature-item wow fadeInUp delay-0-6s">
-                        <span className="number">2</span>
-                        <div className="icon">
-                          <i className="flaticon-return-box" />
-                        </div>
-                        <h4>
-                          <Link legacyBehavior href="/service-details">
-                            {t("regulation2")}
-                          </Link>
-                        </h4>
-                        <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
-                        <img src="assets/images/about/arrow.png" alt="Arrow" />
-                      </div>
-                    </div>
-                    <div className="col-xl-4 col-md-6">
-                      <div className="about-feature-item wow fadeInUp delay-0-7s">
-                        <span className="number">3</span>
-                        <div className="icon">
-                          <i className="flaticon-24-hours" />
-                        </div>
-                        <h4>
-                          <Link legacyBehavior href="/service-details">
-                            {t("regulation3")}
-                          </Link>
-                        </h4>
-                        <p>Sit amet consectetur adipis cing elit sed eiusmoe</p>
-                        <img src="assets/images/about/arrow.png" alt="Arrow" />
-                      </div>
+                <div className="row align-items-center">
+                  <div className="col-lg-12">
+                    <div className="about-three-content rmb-35 wow fadeInLeft delay-0-2s">
+                      {/* <div className="section-title mb-20">
+                        <span className="sub-title mb-20">
+                          {t("sanchouku")}
+                        </span>
+                        <h2>{t("sanchouku_content")}</h2>
+                      </div> */}
+                      <p>{t("regulation_content")}</p>
+                      <button
+                        // href="/assets/files/PGS_KATAYAMA.pdf"
+                        download
+                        className="read-more"
+                        style={{background: "none"}}
+                        onClick={()=>{
+                          setPdf((preValue)=>!preValue)
+                        }}
+                      >
+                        {t("read_more")}{" "}
+                        <i className="fas fa-angle-double-right" />
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div>
+            {pdf && <PDFViewer />}
+          </div>
         </div>
+        {/* <div>
+          <Document
+            file="/assets/files/PGS_KATAYAMA.pdf"
+            onLoadSuccess={onDocumentLoadSuccess}
+          >
+            <Page pageNumber={pageNumber} />
+          </Document>
+          <p>
+            Page {pageNumber} of {numPages}
+          </p>
+        </div> */}
         <div className="about-shapes">
           <img src="assets/images/shapes/about-shape1.png" alt="Shape" />
           <img src="assets/images/shapes/about-shape2.png" alt="Shape" />

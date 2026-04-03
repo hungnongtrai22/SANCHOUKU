@@ -1,5 +1,6 @@
 import '../src/locales/i18n';
-
+// import 'react-pdf/dist/Page/AnnotationLayer.css';
+// import 'react-pdf/dist/Page/TextLayer.css';
 import { Fragment, useEffect, useState } from "react";
 
 import "../styles/globals.css";
@@ -7,6 +8,12 @@ import "../styles/globals.css";
 import Head from "next/head";
 import "react-circular-progressbar/dist/styles.css";
 import i18n from '../src/locales/i18n';
+// import { pdfjs } from 'react-pdf';
+
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   'pdfjs-dist/build/pdf.worker.min.mjs',
+//   import.meta.url,
+// ).toString();
 function MyApp({ Component, pageProps }) {
    const [mounted, setMounted] = useState(false);
 
