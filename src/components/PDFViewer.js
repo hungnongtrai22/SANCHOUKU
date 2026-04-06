@@ -13,13 +13,13 @@ import { EmbedPDF } from "@simplepdf/react-embed-pdf";
 //   );
 // }
 
-export default function PDFViewer() {
+export default function PDFViewer({data}) {
   return (
     <EmbedPDF
       companyIdentifier="react-viewer"
       mode="inline"
       style={{ width: '100%', height: '800px' }}
-      documentURL="/assets/files/PGS_KATAYAMA.pdf"
+      documentURL={data}
     />
   );
 }

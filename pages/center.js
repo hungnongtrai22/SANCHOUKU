@@ -20,8 +20,9 @@ const PDFViewer = dynamic(() => import("../src/components/PDFViewer"), {
 
 const center = () => {
   const { t } = useLocales();
-  const [regulation, setRegulation] = useState();
+  const [regulation, setRegulation] = useState([]);
   const [pdf, setPdf] = useState(false);
+  const [showPGS, setShowPGS] = useState(false);
 
   const getRegulation = useCallback(async () => {
     const { data } = await axios.get(
@@ -36,7 +37,7 @@ const center = () => {
     getRegulation();
   }, []);
 
-  console.log("TEST", regulation);
+  console.log("TEST", regulation[0]?.regulation[0]?.url);
 
   return (
     <Layout>
@@ -53,13 +54,16 @@ const center = () => {
                   <h2>{t("sanchouku_content")}</h2>
                 </div>
                 <p>{t("pgs_content")}</p>
-                <a
-                  href="/assets/files/PGS_KATAYAMA.pdf"
-                  download
-                  className="read-more"
+                <button
+                 download
+                        className="read-more"
+                        style={{background: "none"}}
+                        onClick={()=>{
+                          setShowPGS((preValue)=>!preValue)
+                        }}
                 >
                   {t("read_more")} <i className="fas fa-angle-double-right" />
-                </a>
+                </button>
                 {/* <div className="row mt-30">
                   <div className="col-md-6">
                     <div className="about-feature-two">
@@ -137,6 +141,10 @@ const center = () => {
               </div>
             </div>
           </div>
+
+           <div>
+            {showPGS && regulation && <PDFViewer data={regulation[0]?.pgs[0]?.url}/>}
+          </div>
         </div>
         <img
           src="assets/images/shapes/about-page.png"
@@ -198,7 +206,7 @@ const center = () => {
             </div>
           </div>
           <div>
-            {pdf && <PDFViewer />}
+            {pdf && regulation && <PDFViewer data={regulation[0]?.regulation[0]?.url}/>}
           </div>
         </div>
         {/* <div>
