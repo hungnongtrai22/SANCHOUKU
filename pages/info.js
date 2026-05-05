@@ -13,25 +13,43 @@ import PhotoGallery from "../src/components/slider/PhotoGallery";
 import Layout from "../src/layout/Layout";
 import { useLocales } from "../src/locales";
 const Info = () => {
-  const { t } = useLocales();
+  const { t, currentLang } = useLocales();
   const [farmers, setNewFarmers] = useState([]);
+  const [diaries, setNewDiaries] = useState([]);
+
   const getAllFarmerHandler = useCallback(
     async () => {
       // console.log("Month",date.getMonth());
       // console.log("Year",date.getFullYear());
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_BE_HOST}/api/farmer/list`
+        `${process.env.NEXT_PUBLIC_BE_HOST}/api/farmer/list`,
       );
-            console.log("TEST", data.farmers);
+      // console.log("TEST", data.farmers);
 
       setNewFarmers(data.farmers);
     },
-    []
+    [],
+    // [date]
+  );
+
+  const getAllDiariesHandler = useCallback(
+    async () => {
+      // console.log("Month",date.getMonth());
+      // console.log("Year",date.getFullYear());
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_BE_HOST}/api/diary/list`,
+      );
+      console.log("TEST", data.diaries);
+
+      setNewDiaries(data.diaries);
+    },
+    [],
     // [date]
   );
 
   useEffect(() => {
     getAllFarmerHandler();
+    getAllDiariesHandler();
   }, []);
   return (
     <Layout>
@@ -44,7 +62,7 @@ const Info = () => {
             <h2>{t("info_farmer")}</h2>
           </div>
         </div>
-        <FeedbackTwoSlider farmers={farmers}/>
+        <FeedbackTwoSlider farmers={farmers} />
       </section>
       {/* Feedback Section End */}
 
@@ -232,213 +250,44 @@ const Info = () => {
         </div>
         <div className="container">
           <div className="row justify-content-center blog-grid">
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-2s">
-                <div className="image">
-                  <img src="assets/images/news/news1.jpg" alt="News" />
-                  <span className="date">
-                    <b>25</b> July
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Vegetable</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Unicode UTF8 Character Sets They Sltimate Guide Systems
+            {diaries.map((diary, index) => (
+              <div key={index} className="col-xl-4 col-md-6">
+                <div className="news-item wow fadeInUp delay-0-2s">
+                  <div className="image">
+                    <img src={diary.avatar[0].url} alt="News" />
+                    {currentLang === "jp" && (
+                      <span className="date">
+                        <b>{new Date(diary.date).getDate()} 日</b>{" "}
+                        {new Date(diary.date).getMonth() + 1} 月
+                      </span>
+                    )}
+
+                    {currentLang !== "jp" && (
+                      <span className="date">
+                        <b>{"Th " + new Date(diary.date).getDate()}</b>{" "}
+                        {new Date(diary.date).getMonth() + 1}
+                      </span>
+                    )}
+                  </div>
+                  <div className="content">
+                    <span className="sub-title">
+                      {currentLang === "jp" ? diary.topicJP : diary.topic}
+                    </span>
+                    <h4>
+                      <Link href={`/diary/${diary._id}`}>
+                        {currentLang === "jp" ? diary.titleJP : diary.title}
+                      </Link>
+                    </h4>
+                    <Link legacyBehavior  href={`/diary/${diary._id}`}>
+                      <a className="read-more">
+                        {t("read_more")}{" "}
+                        <i className="fas fa-angle-double-right" />
+                      </a>
                     </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-4s">
-                <div className="image">
-                  <img src="assets/images/news/news2.jpg" alt="News" />
-                  <span className="date">
-                    <b>28</b> July
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Farming</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Quality Foods Requirments For Every Human Body’s
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-6s">
-                <div className="image">
-                  <img src="assets/images/news/news3.jpg" alt="News" />
-                  <span className="date">
-                    <b>30</b> July
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Organic Fruits</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Choose Awesome Vegetables For Your Daily Life Routine
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-2s">
-                <div className="image">
-                  <img src="assets/images/news/news4.jpg" alt="News" />
-                  <span className="date">
-                    <b>06</b> Nov
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Vegetable</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Unicode UTF8 Character Sets They Sltimate Guide Systems
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-4s">
-                <div className="image">
-                  <img src="assets/images/news/news5.jpg" alt="News" />
-                  <span className="date">
-                    <b>03</b> Sep
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Farming</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Quality Foods Requirments For Every Human Body’s
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-6s">
-                <div className="image">
-                  <img src="assets/images/news/news6.jpg" alt="News" />
-                  <span className="date">
-                    <b>09</b> Sep
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Organic Fruits</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Choose Awesome Vegetables For Your Daily Life Routine
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-2s">
-                <div className="image">
-                  <img src="assets/images/news/news7.jpg" alt="News" />
-                  <span className="date">
-                    <b>06</b> Nov
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Vegetable</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Unicode UTF8 Character Sets They Sltimate Guide Systems
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-4s">
-                <div className="image">
-                  <img src="assets/images/news/news8.jpg" alt="News" />
-                  <span className="date">
-                    <b>03</b> Sep
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Farming</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Quality Foods Requirments For Every Human Body’s
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
-              <div className="news-item wow fadeInUp delay-0-6s">
-                <div className="image">
-                  <img src="assets/images/news/news9.jpg" alt="News" />
-                  <span className="date">
-                    <b>06</b> Sep
-                  </span>
-                </div>
-                <div className="content">
-                  <span className="sub-title">Organic Fruits</span>
-                  <h4>
-                    <Link legacyBehavior href="/blog-details">
-                      Choose Awesome Vegetables For Your Daily Life Routine
-                    </Link>
-                  </h4>
-                  <Link legacyBehavior href="/blog-details">
-                    <a className="read-more">
-                      Read More <i className="fas fa-angle-double-right" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <ul className="pagination justify-content-center flex-wrap">
             <Pagination

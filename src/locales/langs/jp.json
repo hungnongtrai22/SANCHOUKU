@@ -174,5 +174,9 @@
   "plan": "生産計画・販売計画",
   "internal": "内部",
   "commit": "コミットメント",
-  "regulation_content": "SANCHOUKUセンターの規定は、商品の品質を確保し、生産の透明性を高め、生産者と消費者の信頼関係を築くことを目的としています。"
+  "regulation_content": "SANCHOUKUセンターの規定は、商品の品質を確保し、生産の透明性を高め、生産者と消費者の信頼関係を築くことを目的としています。",
+  "topic": "テーマ",
+  "share": "シェア",
+  "related_diary": "栽培履歴",
+  "recent_diary": "最近の栽培履歴"
 }

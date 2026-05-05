@@ -22,7 +22,7 @@ const FeedbackTwoSlider = ({farmers}) => {
   return (
     <Slider {...feedbackTwoActive} className="feedback-two-active mt-20">
       {farmers?.map((item, index) => {
-          const clean = DOMPurify.sanitize(currentLang.value === 'jp' ? item.shortIntroduceJP : item.shortIntroduce).replace(/&nbsp;/g, " ");
+          const clean = DOMPurify.sanitize(currentLang.value === 'jp' ? item?.shortIntroduceJP : item?.shortIntroduce).replace(/&nbsp;/g, " ");
           
 
         return <div key={item._id} className="feedback-item style-two wow fadeInUp delay-0-2s">
@@ -86,7 +86,7 @@ const FeedbackTwoSlider = ({farmers}) => {
           </div>
           <div className="title">
             <h4>
-              <Link legacyBehavior href={`/farmer/${item._id}`}>{currentLang.value === 'jp'? item.nameJP : item.name}</Link></h4>
+              <Link legacyBehavior href={`/farmer/${item._id}`}>{currentLang.value === 'jp'? item?.nameJP ? item?.nameJP : "" : item?.name}</Link></h4>
             <span>{currentLang.value === 'jp'? item.nameFarmJP : item.nameFarm}</span>
           </div>
           <div className="ratting">
