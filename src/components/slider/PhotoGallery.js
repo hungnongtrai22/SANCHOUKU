@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Fragment, useRef } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import { useLocales } from "../../locales";
+import axios from "axios";
 
 const PhotoGallery = (props) => {
   const { t } = useLocales();
@@ -26,6 +27,27 @@ const PhotoGallery = (props) => {
     slidesToScroll: 1,
     variableWidth: true,
   };
+
+  const [images, setImages] = useState([]);
+
+  const getImagesHandler = useCallback(
+    async () => {
+      // console.log("Month",date.getMonth());
+      // console.log("Year",date.getFullYear());
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_BE_HOST}/api/center/list`,
+      );
+      console.log("Year", data);
+
+      setImages(data.centers[0].images);
+    },
+    [],
+    // [date]
+  );
+
+  useEffect(() => {
+    getImagesHandler();
+  }, []);
 
   return (
     <Fragment>
@@ -60,70 +82,33 @@ const PhotoGallery = (props) => {
       )}
 
       <div className="container-fluid">
-        <Slider
-          {...settings}
-          ref={sliderRef}
-          className="gallery-active"
-        >
-          <div className="gallery-item wow fadeInUp delay-0-2s">
-            <img src="/assets/images/gellery/gallery1.jpg" alt="Gallery" />
-            <div className="gallery-over">
-              <div className="content">
-                <h4>Organic Fruits</h4>
-                <p>Fresh Food</p>
-              </div>
-              <Link legacyBehavior href="/portfolio-details">
-                <a className="details-btn">
-                  <i className="fas fa-arrow-right" />
-                </a>
-              </Link>
+        <Slider {...settings} ref={sliderRef} className="gallery-active">
+          {images.map((item, index) => (
+            <div
+              className={`gallery-item wow fadeInUp delay-0-${(index + 1) * 2}s`}
+            >
+              <img
+                src={item.url}
+                alt="Gallery"
+                style={{
+                  width: "375px",
+                  height: "436px",
+                  objectFit: "cover", // hoặc contain
+                }}
+              />
+              {/* <div className="gallery-over">
+                <div className="content">
+                  <h4>Organic Fruits</h4>
+                  <p>Fresh Food</p>
+                </div>
+                <Link legacyBehavior href="/portfolio-details">
+                  <a className="details-btn">
+                    <i className="fas fa-arrow-right" />
+                  </a>
+                </Link>
+              </div> */}
             </div>
-          </div>
-
-          <div className="gallery-item big-item wow fadeInUp delay-0-4s">
-            <img src="/assets/images/gellery/gallery2.jpg" alt="Gallery" />
-            <div className="gallery-over">
-              <div className="content">
-                <h4>Organic Fruits Juice</h4>
-                <p>Fresh Food &amp; Vegetable</p>
-              </div>
-              <Link legacyBehavior href="/portfolio-details">
-                <a className="details-btn">
-                  <i className="fas fa-arrow-right" />
-                </a>
-              </Link>
-            </div>
-          </div>
-
-          <div className="gallery-item wow fadeInUp delay-0-6s">
-            <img src="/assets/images/gellery/gallery3.jpg" alt="Gallery" />
-            <div className="gallery-over">
-              <div className="content">
-                <h4>Organic Fruits</h4>
-                <p>Vegetable</p>
-              </div>
-              <Link legacyBehavior href="/portfolio-details">
-                <a className="details-btn">
-                  <i className="fas fa-arrow-right" />
-                </a>
-              </Link>
-            </div>
-          </div>
-
-          <div className="gallery-item wow fadeInUp delay-0-8s">
-            <img src="/assets/images/gellery/gallery4.jpg" alt="Gallery" />
-            <div className="gallery-over">
-              <div className="content">
-                <h4>Organic Fruits</h4>
-                <p>Fresh Food</p>
-              </div>
-              <Link legacyBehavior href="/portfolio-details">
-                <a className="details-btn">
-                  <i className="fas fa-arrow-right" />
-                </a>
-              </Link>
-            </div>
-          </div>
+          ))}
         </Slider>
       </div>
     </Fragment>
