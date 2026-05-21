@@ -89,7 +89,7 @@ const DiaryDetails = () => {
                   <li>
                     <i className="far fa-calendar-alt" />
                     <a href="#">
-                      {currentLang === "jp"
+                      {currentLang?.value === "jp"
                         ? formatDateJP(diary?.date)
                         : formatDateVI(diary?.date)}
                     </a>
@@ -100,7 +100,7 @@ const DiaryDetails = () => {
                   </li>
                 </ul>
                 <h3 className="title">
-                  {currentLang === "jp" ? diary?.titleJP : diary?.title}
+                  {currentLang?.value === "jp" ? diary?.titleJP : diary?.title}
                 </h3>
                 <div className="image my-35">
                   <img src={diary?.avatar[0].url} alt="Blog" />
@@ -154,7 +154,7 @@ const DiaryDetails = () => {
                   <div className="tags">
                     <h6>{t("topic")} : </h6>
                     <Link href="/blog-grid">
-                      {currentLang === "jp" ? diary?.topicJP : diary?.topic}
+                      {currentLang?.value === "jp" ? diary?.topicJP : diary?.topic}
                     </Link>
                     {/* <Link legacyBehavior href="/blog-grid">
                       Vegetables
@@ -200,13 +200,13 @@ const DiaryDetails = () => {
                       <div className="content">
                         <h6>
                           <Link href={`/diary/${diaries[0]._id}`}>
-                            {currentLang === "jp"
+                            {currentLang?.value === "jp"
                               ? diaries[0].titleJP
                               : diaries[0].title}
                           </Link>
                         </h6>
                         <span className="name">
-                          {currentLang === "jp"
+                          {currentLang?.value === "jp"
                             ? diaries[0].topicJP
                             : diaries[0].topic}
                         </span>
@@ -228,13 +228,13 @@ const DiaryDetails = () => {
                       <div className="content">
                         <h6>
                           <Link href={`/diary/${diaries[1]._id}`}>
-                            {currentLang === "jp"
+                            {currentLang?.value === "jp"
                               ? diaries[1].titleJP
                               : diaries[1].title}
                           </Link>
                         </h6>
                         <span className="name">
-                          {currentLang === "jp"
+                          {currentLang?.value === "jp"
                             ? diaries[1].topicJP
                             : diaries[1].topic}
                         </span>
@@ -258,15 +258,15 @@ const DiaryDetails = () => {
                             alt="News"
                           />
                           <span className="date">
-                            {currentLang === 'jp' && <><b>{new Date(item?.date).getDate()} 日</b> {new Date(item?.date).getDate()} 月</>}
-                            {currentLang !== 'jp' && <><b>{new Date(item?.date).getDate()}   </b> Th {new Date(item?.date).getMonth() + 1}</>}
+                            {currentLang?.value === 'jp' && <><b>{new Date(item?.date).getDate()} 日</b> {new Date(item?.date).getDate()} 月</>}
+                            {currentLang?.value !== 'jp' && <><b>{new Date(item?.date).getDate()}   </b> Th {new Date(item?.date).getMonth() + 1}</>}
                           </span>
                         </div>
                         <div className="content">
-                          <span className="sub-title">{currentLang === "jp" ? item?.topicJP : item?.topic}</span>
+                          <span className="sub-title">{currentLang?.value === "jp" ? item?.topicJP : item?.topic}</span>
                           <h4>
                             <Link  href={`/diary/${item?._id}`}>
-                               {currentLang === "jp" ? item?.titleJP : item?.title}
+                               {currentLang?.value === "jp" ? item?.titleJP : item?.title}
                             </Link>
                           </h4>
                           <Link legacyBehavior href={`/diary/${item?._id}`}>

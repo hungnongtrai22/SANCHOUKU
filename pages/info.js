@@ -16,6 +16,7 @@ const Info = () => {
   const { t, currentLang } = useLocales();
   const [farmers, setNewFarmers] = useState([]);
   const [diaries, setNewDiaries] = useState([]);
+  console.log("TEST", currentLang);
 
   const getAllFarmerHandler = useCallback(
     async () => {
@@ -255,14 +256,14 @@ const Info = () => {
                 <div className="news-item wow fadeInUp delay-0-2s">
                   <div className="image">
                     <img src={diary.avatar[0].url} alt="News" />
-                    {currentLang === "jp" && (
+                    {currentLang?.value === "jp" && (
                       <span className="date">
                         <b>{new Date(diary.date).getDate()} 日</b>{" "}
                         {new Date(diary.date).getMonth() + 1} 月
                       </span>
                     )}
 
-                    {currentLang !== "jp" && (
+                    {currentLang?.value !== "jp" && (
                       <span className="date">
                         <b>{"Th " + new Date(diary.date).getDate()}</b>{" "}
                         {new Date(diary.date).getMonth() + 1}
@@ -271,11 +272,11 @@ const Info = () => {
                   </div>
                   <div className="content">
                     <span className="sub-title">
-                      {currentLang === "jp" ? diary.topicJP : diary.topic}
+                      {currentLang?.value === "jp" ? diary.topicJP : diary.topic}
                     </span>
                     <h4>
                       <Link href={`/diary/${diary._id}`}>
-                        {currentLang === "jp" ? diary.titleJP : diary.title}
+                        {currentLang?.value === "jp" ? diary.titleJP : diary.title}
                       </Link>
                     </h4>
                     <Link legacyBehavior  href={`/diary/${diary._id}`}>
