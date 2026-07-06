@@ -102,7 +102,7 @@ const ExperienceTeam = () => {
       >
         {employees?.map((item, index) => <div key={index} className="team-member wow fadeInUp delay-0-2s">
           <div className="image">
-            <img src={item.image[0].url} alt="Team Member" style={{width: "220px", height: "220px"}}/>
+            <img src={item?.image?.[0]?.url} alt="Team Member" style={{width: "220px", height: "220px"}}/>
             <div className="social-style-one">
               <a href="#">
                 <i className="fab fa-facebook-f" />

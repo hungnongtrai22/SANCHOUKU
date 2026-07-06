@@ -154,7 +154,9 @@ const DiaryDetails = () => {
                   <div className="tags">
                     <h6>{t("topic")} : </h6>
                     <Link href="/blog-grid">
-                      {currentLang?.value === "jp" ? diary?.topicJP : diary?.topic}
+                      {currentLang?.value === "jp"
+                        ? diary?.topicJP
+                        : diary?.topic}
                     </Link>
                     {/* <Link legacyBehavior href="/blog-grid">
                       Vegetables
@@ -253,20 +255,33 @@ const DiaryDetails = () => {
                         className={`news-item wow fadeInUp delay-0-${index % 2 === 0 ? "2" : "4"}s`}
                       >
                         <div className="image">
-                          <img
-                            src={item.avatar[0].url}
-                            alt="News"
-                          />
+                          <img src={item.avatar[0].url} alt="News" />
                           <span className="date">
-                            {currentLang?.value === 'jp' && <><b>{new Date(item?.date).getDate()} 日</b> {new Date(item?.date).getDate()} 月</>}
-                            {currentLang?.value !== 'jp' && <><b>{new Date(item?.date).getDate()}   </b> Th {new Date(item?.date).getMonth() + 1}</>}
+                            {currentLang?.value === "jp" && (
+                              <>
+                                <b>{new Date(item?.date).getDate()} 日</b>{" "}
+                                {new Date(item?.date).getDate()} 月
+                              </>
+                            )}
+                            {currentLang?.value !== "jp" && (
+                              <>
+                                <b>{new Date(item?.date).getDate()} </b> Th{" "}
+                                {new Date(item?.date).getMonth() + 1}
+                              </>
+                            )}
                           </span>
                         </div>
                         <div className="content">
-                          <span className="sub-title">{currentLang?.value === "jp" ? item?.topicJP : item?.topic}</span>
+                          <span className="sub-title">
+                            {currentLang?.value === "jp"
+                              ? item?.topicJP
+                              : item?.topic}
+                          </span>
                           <h4>
-                            <Link  href={`/diary/${item?._id}`}>
-                               {currentLang?.value === "jp" ? item?.titleJP : item?.title}
+                            <Link href={`/diary/${item?._id}`}>
+                              {currentLang?.value === "jp"
+                                ? item?.titleJP
+                                : item?.title}
                             </Link>
                           </h4>
                           <Link legacyBehavior href={`/diary/${item?._id}`}>
