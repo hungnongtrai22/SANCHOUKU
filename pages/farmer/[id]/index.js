@@ -158,20 +158,19 @@ const FramerDetail = () => {
       <section className="feature-section pb-100 rpb-70 rel z-1">
         <div className="container">
           <div className="row">
-            <div className="col-xl-4 col-md-6">
-              <div className="feature-item wow fadeInUp delay-0-2s">
+            {farmer?.popularProduct?.length > 0 && farmer?.popularProduct.map((item, index)=>  <div className="col-xl-4 col-md-6">
+              <div className={`feature-item ${index === 1 && "color-two"} ${index === 2 && "color-three"} wow fadeInUp delay-0-${index+2}s`}>
                 <div className="content">
-                  <span className="number">01</span>
+                  <span className="number">0{index + 1}</span>
                   <div className="image">
                     <img
-                      src="/assets/images/features/feature1.png"
+                      src={item?.image?.[0]?.url}
                       alt="Feature"
                     />
                   </div>
-                  <h4>{t("nuds")}</h4>
+                  <h4>{currentLang.value === "jp" ? item?.titleJP : item?.title}</h4>
                   <p>
-                    Quis autem vel eum reprehenderit quiea voluptate velit esse
-                    quam niyate smolestiae consequatur nulla
+                   {currentLang.value === "jp" ? item?.shortDescriptionJP : item?.shortDescription}
                   </p>
                 </div>
                 <Link legacyBehavior href="/service-details">
@@ -180,8 +179,9 @@ const FramerDetail = () => {
                   </a>
                 </Link>
               </div>
-            </div>
-            <div className="col-xl-4 col-md-6">
+            </div>)}
+           
+            {/* <div className="col-xl-4 col-md-6">
               <div className="feature-item color-two wow fadeInUp delay-0-4s">
                 <div className="content">
                   <span className="number">02</span>
@@ -228,7 +228,7 @@ const FramerDetail = () => {
                   </a>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -241,7 +241,7 @@ const FramerDetail = () => {
               <div className="about-two-image not-rounded wow fadeInUp delay-0-2s">
                 <img
                   className="image"
-                  src="/assets/images/about/about-page-left.jpg"
+                  src={farmer?.whyImage?.[0]?.url}
                   alt="About"
                 />
                 <img
